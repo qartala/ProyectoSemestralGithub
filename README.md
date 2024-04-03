@@ -19,6 +19,9 @@ compra almacenadas, un botón home, y un botón cerrar sesión.
 
 6.-Sistema debe permitir ingresar ordenes de compras.
 
+
+
+
 **Integrantes:**
 
 - Joshua Lizama
