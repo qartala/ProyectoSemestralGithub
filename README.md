@@ -24,9 +24,9 @@ compra almacenadas, un botón home, y un botón cerrar sesión.
 
 **Integrantes:**
 
-- Joshua Lizama
+- Joshua Lizama https://github.com/TheMagic23
   
-- José Salvo
+- José Salvo https://github.com/Mr-P1
   
 - Raúl Villalón
 
