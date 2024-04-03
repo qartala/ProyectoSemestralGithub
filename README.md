@@ -28,7 +28,7 @@ compra almacenadas, un botón home, y un botón cerrar sesión.
   
 - José Salvo https://github.com/Mr-P1
   
-- Raúl Villalón
+- Raúl Villalón https://github.com/qartala
 
 
 
