@@ -1,12 +1,16 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect ,get_object_or_404
 from django.contrib.auth.models import User 
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-
+from modulos.productos.models import Producto
 # Create your views here.
 
 def index(request):
-    return render(request,'index.html')
+    productos = Producto.objects.all()
+    datos = {
+        'productos':productos
+    }
+    return render(request,'index.html',datos)
 
 
 def registrarse(request):
