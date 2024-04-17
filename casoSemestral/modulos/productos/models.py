@@ -19,8 +19,3 @@ class Producto(models.Model):
     stock= models.SmallIntegerField(validators=[MinValueValidator(1)])
     categoria = models.CharField(max_length=20, choices=categorias)
 
-
-
-# class Imagen(models.Model):
-#     producto = models.ForeignKey(Producto, related_name='imagenes', on_delete=models.CASCADE)
-#     imagen = models.ImageField(upload_to='productos')

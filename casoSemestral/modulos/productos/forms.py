@@ -3,19 +3,6 @@ from django.forms import inlineformset_factory
 
 from modulos.productos.models import Producto
 
-# class ProductoForm(forms.ModelForm):
-#     class Meta:
-#         model = Producto
-#         fields = ('nombre', 'descripcion','imagen', 'precio', 'stock', 'categoria')
-
-# class ImagenForm(forms.ModelForm):
-#     class Meta:
-#         model = Imagen
-#         fields = ('imagen', )
-
-# ImagenFormSet  = inlineformset_factory(Producto, Imagen, form=ImagenForm, extra=1,can_delete=True)
-
-
 
 class productoForm(forms.ModelForm):
     class Meta:
