@@ -1,0 +1,15 @@
+{% extends '../base/base.html' %}
+
+{% block content %}
+
+
+<div class="card" style="margin-top: 10%;">
+    <h2 >{{producto.nombre}}</h2>
+    <p>{{producto.descripcion}}</p>
+
+    <a href="{% url 'añadir' producto.id %}">Añadir al carrito</a>
+</div>
+
+
+
+{% endblock %}

@@ -40,7 +40,7 @@
                     <h2>{{producto.nombre}}</h2>
                     <h3>CLP{{producto.precio}}</h3>
                     <p> {{producto.stock}}  restantes</p>
-                    <a href="#" class="btn " type="button">Detalles</a>
+                    <a href="{% url 'detalle' producto.id %}" class="btn " type="button">Detalles</a>
                 </div>
             </div>
             {% endfor %}
