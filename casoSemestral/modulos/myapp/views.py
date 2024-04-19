@@ -4,7 +4,8 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from modulos.productos.models import Producto
 import sweetify 
-from distutils.log import error
+
+
 # Create your views here.
 
 def index(request):
@@ -24,6 +25,10 @@ def registrarse(request):
         if request.POST['password1'] == request.POST['password2']:
             try:
                 usuario= User.objects.create_user(username= request.POST['username'], password= request.POST['password1'],email=request.POST['email'])
+                
+                if usuario.username == 'admin':
+                    usuario.is_staff = True
+
                 usuario.save()
 
                 return redirect('iniciar_sesion')
@@ -33,6 +38,8 @@ def registrarse(request):
                 datos = {
                     'error':"El usuario ya existe"
                 }
+                sweetify.warning(request, title='Error',text = 'El usuario ya existe', persistent= 'Confirmar')
+
                 return render(request,'login/registrarse.html',datos)
         
         else:
@@ -40,6 +47,7 @@ def registrarse(request):
             datos = {
                 'error': "Las contraseñas deben ser las mismas"
             }
+            sweetify.warning(request, title = 'Error: Contraseña', text= 'Las contraseñas son diferentes', persistent= 'Confirmar')
 
             return render(request,'login/registrarse.html',datos)
 
@@ -52,17 +60,21 @@ def iniciar_sesion(request):
         user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
         if user is None:
             # No se encontró al usuario
-            sweetify.warning(request, 'Usuario y contraseña no existen :C')
+            sweetify.warning(request, title= 'Error: Usuario y contraseña', text ='Verifique el usuario y contraseña')
             datos = {
                 "error": 'No se encontró al usuario'
             }
             return render(request, 'login/iniciar_sesion.html', datos)
         else:
             login(request, user)
-            return redirect('index')
+            if user.is_staff == True :
+                return redirect('listar')
+
+            else:
+                return redirect('index')
         
 
-
+@login_required
 def cerrar_sesion(request):
     logout(request)
     return redirect('index')

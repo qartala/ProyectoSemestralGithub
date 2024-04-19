@@ -116,6 +116,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+LOGIN_URL = '/login/'
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = join(BASE_DIR,'media')

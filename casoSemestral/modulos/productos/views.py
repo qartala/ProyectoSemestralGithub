@@ -1,13 +1,14 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from modulos.productos.forms import productoForm
 from modulos.productos.models import Producto
+from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-
+import sweetify
 
 # Create your views here.
 
-
+@login_required
 def listarProd(request):
     productos = Producto.objects.all()
 
@@ -19,7 +20,7 @@ def listarProd(request):
 
 
 
-
+@login_required
 def agregarProd(request):
     if request.method == 'POST':
         print(request.POST)
@@ -29,12 +30,14 @@ def agregarProd(request):
             producto = producto_form.save()
             producto.save()
             return redirect('listar')
+        
+        sweetify.success(request, title='Hecho', text = 'Producto guardado correctamente')
     else:
         producto_form = productoForm()
 
     return render(request, 'productos/agregar.html', {'producto_form': producto_form})
 
-
+@login_required
 def modificar(request,id):
     if request.method == 'GET':
        
@@ -62,17 +65,15 @@ def modificar(request,id):
 
             return render(request,'productos/modificar.html',datos)
         
-
+@login_required
 def eliminarProd(request, id):
     producto  = get_object_or_404(Producto, id = id)
     producto.delete()
 
     return redirect('listar')
 
-def test(request):
-    return render(request,'productos/test2.html')
 
-
+@login_required
 def cerrarSesion(request):
     logout(request)
     return redirect('index')

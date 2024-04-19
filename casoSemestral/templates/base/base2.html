@@ -10,17 +10,17 @@
 </head>
 
 <body>
-   
+
     <main class="container">
-        
+
 
         <div class="row">
 
             <!-- Parte izquierda -->
-    
-    
+
+
             <div class="col-sm-12 col-md-5 col-lg-3 col-xl-3 mt-2">
-    
+
                 <div class="list-group">
                     <a href="{% url 'listar' %}" class="list-group-item list-group-item-action">Listado de productos</a>
                     <a href="{% url 'agregar'%}" class="list-group-item list-group-item-action">Agregar producto</a>
@@ -28,26 +28,27 @@
                     <a href="{% url 'cerrar' %}" class="list-group-item list-group-item-action">Agregar Admin</a>
                     <a href="{% url 'cerrar' %}" class="list-group-item list-group-item-action">Cerra Sesion</a>
                 </div>
-    
+
             </div>
 
 
-            
+
             <!-- Fin Parte izquierda -->
-    
+
             <!-- Parte derecha -->
             {% block content %}
-    
-    
+
+
             {% endblock %}
-    
+
             <!-- Parte derecha -->
-    
+
         </div>
 
     </main>
-    
 
+    {% load sweetify %}
+    {% sweetify %}
 
 </body>
 

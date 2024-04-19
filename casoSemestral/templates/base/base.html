@@ -28,8 +28,7 @@
         <ul>
             <li><a href="{% url 'index' %}">Inicio</a></li>
             {% if user.is_authenticated %}
-        
-            <li><a href="{% url 'listar' %}">Producto</a></li>           
+
             <li><a href="{% url 'cerrar_sesion' %}">Cerrar sesion</a></li>
             {% else %}
             <li><a  href="{% url 'registrarse'%}">Registrarse</a></li>
