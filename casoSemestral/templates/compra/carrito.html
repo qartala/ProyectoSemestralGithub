@@ -28,7 +28,7 @@
 
         <h2>Total a pagar {{total}} CLP</h2>
 
-        <a href="#">Continuar</a>
+        <a href="{% url 'ordencompra' total %}">Continuar</a>
         <a href="{% url 'vaciar' %}">Vaciar Carrito</a>
 
     {% else %}
