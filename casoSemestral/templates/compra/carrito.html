@@ -1,0 +1,47 @@
+{% extends '../base/base.html' %}
+{% block content %}
+
+<div class="card" style="margin-top: 20%;">
+    
+
+    {% if carrito %}
+
+        {% for carro in carrito %}
+        <ul>
+            <li>
+                {{carro.producto.nombre}}
+            </li>
+            <li>
+                <a href="{% url 'restar' carro.producto.id %}">Restar</a>
+            </li>
+            <li>
+                {{carro.cantidad}}
+            </li>
+            <li>
+                <a href="{% url 'sumar' carro.producto.id %}">Añadir</a>
+            </li>
+            <li>
+                {{carro.subtotal}}
+            </li>
+        </ul>
+        {% endfor %}
+
+        <h2>Total a pagar {{total}} CLP</h2>
+
+        <a href="{% url 'ordencompra' total %}">Continuar</a>
+        <a href="{% url 'vaciar' %}">Vaciar Carrito</a>
+
+    {% else %}
+        <h2>
+            {{mensaje}}
+        </h2>
+
+    {% endif %}
+
+
+
+
+
+</div>
+
+{% endblock %}
