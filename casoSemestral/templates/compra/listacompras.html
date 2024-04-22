@@ -3,22 +3,29 @@
 {% block content %}
 
 <div class="card" style="margin-top: 20%;">
-    <h2>Ordenes de compra </h2>
-    {% for orden in ordenes %}
-    <ul>
-        <li>Datos de la compra N° {{orden.id}}</li>
-        <li>Fecha de compra {{orden.f_compra}}</li>
-        <li>Total {{orden.total}}</li>
-        <li>Comuna de entrega {{orden.comuna}}</li>
-        <li>Direccion de entrega {{orden.direccion}}</li>
-        <li>Estado de envio {{orden.estado}}</li>
-        {% for compra in orden.compraproducto_set.all %}
-        <li>nombre del producto {{compra.nombre}}</li>
-        <li>cant del producto {{compra.cantidad}}</li>
-        <li>subtotal del producto{{compra.subtotal}}</li>
+
+    {% if ordenes %}
+        <h2>Ordenes de compra </h2>
+        {% for orden in ordenes %}
+        <ul>
+            <li>Datos de la compra N° {{orden.id}}</li>
+            <li>Fecha de compra {{orden.f_compra}}</li>
+            <li>Total {{orden.total}}</li>
+            <li>Comuna de entrega {{orden.comuna}}</li>
+            <li>Direccion de entrega {{orden.direccion}}</li>
+            <li>Estado de envio {{orden.estado}}</li>
+            {% for compra in orden.compraproducto_set.all %}
+            <li>nombre del producto {{compra.nombre}}</li>
+            <li>cant del producto {{compra.cantidad}}</li>
+            <li>subtotal del producto{{compra.subtotal}}</li>
+            {% endfor %}
+        </ul>
         {% endfor %}
-    </ul>
-    {% endfor %}
+    {% else %}
+        <h2>{{mensaje}}</h2>
+
+    {% endif %}
+    
    
 </div>
 {% endblock %}

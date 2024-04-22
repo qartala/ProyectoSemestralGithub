@@ -230,13 +230,20 @@ def restarProductosBD(idProducto , cantidad):
 
 @login_required
 def listaOrdenes(request):
+    
     ordenes = OrdenCompra.objects.filter(usuario = request.user.id)
-    compras =compraProducto.objects.filter(compra__in = ordenes)
-    datos = {
-        'ordenes':ordenes,
-        'compras':compras
-    }
-    return render(request,'compra/listacompras.html',datos)
+    if ordenes.exists():
+        compras =compraProducto.objects.filter(compra__in = ordenes)
+        datos = {
+            'ordenes':ordenes,
+            'compras':compras
+        }
+        return render(request,'compra/listacompras.html',datos)
+    else:
+        datos = {
+            'mensaje':'Aun no has realizado una compra'
+        }
+        return render(request, 'compra/listacompras.html',datos)
 
 #Quitar cuando ya este todo listo
 def eliminarLOl(request):
