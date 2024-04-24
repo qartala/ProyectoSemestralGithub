@@ -1,0 +1,45 @@
+{% extends '../base/base2.html' %}
+{% block content %}
+<div style="height: 100px;"></div> <!-- Espacio vacío para separar los productos del footer -->
+
+
+<div class="col-sm-12 col-md-6 col-lg-6 col-xl-8">
+    <h1 class="text-center">Listar</h1>
+
+    <div class="table-responsive py-2">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>imagen</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{producto.id}}</td>
+                    {% if producto.imagen %}
+                    <td> <img src="{{producto.imagen.url}}" alt="" width="60" height="40"></td>
+                    {% endif %}
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.descripcion}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.stock}}</td>
+                    <td>
+                        <a href="{% url 'editar' producto.id %}" class="btn btn-primary">Editar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

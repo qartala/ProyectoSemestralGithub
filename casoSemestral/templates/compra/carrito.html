@@ -1,0 +1,59 @@
+{% extends '../base/base.html' %}
+
+{% block content %}
+
+<div class="main-content">
+    {% if carrito %}
+    <div class="totalPag"><h2>Total a pagar: {{total}} CLP</h2></div> 
+  <div class="cart">
+
+        <div class="cart-items">
+            <div class="container-title">
+                 
+            </div>
+                      
+      
+                {% for carro in carrito %}
+             
+               
+                    <div class="cart-item">
+                        <img src="{{carro.producto.imagen.url}}" alt="{{carro.producto.nombre}}">
+                        <div class="item-details">
+                            <div class="product-name">{{carro.producto.nombre}}</div>
+                            <div class="quantity">
+                                <a href="{% url 'restar' carro.producto.id %}">-</a>
+                                <span>{{carro.cantidad}}</span>
+                                <a href="{% url 'sumar' carro.producto.id %}">+</a>
+                            </div>
+                            <div class="subtotal">CLP{{carro.subtotal}}</div>
+                        
+                        </div>
+                    </div>
+                {% endfor %}
+          
+        </div>
+       
+    </div>
+    <div class="cart-total">
+        <a class="btn2" type="button" href="{% url 'vaciar' %}">Vaciar Carrito</a>
+        <a class="btn1" type="button">Continuar</a>
+    </div>
+
+
+   
+</div>
+{% else %}
+<div class="main">
+<h2>
+    <i class="fas fa-cart-arrow-down"> </i> 
+    {{mensaje}}
+    
+</h2>
+
+</div>
+
+{% endif %}
+<div class="parteAbajo" style="height: 157px;"></div> <!-- Espacio vacío para separar los productos del footer -->
+
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends '../base/base.html' %}
+{% load sweetify %}
+{% block content %}
+
+
+<span><h4>{{ mensaje }} </h4></span>
+
+<div class="main-content">
+
+
+    <main class="info-product">
+        
+        <div class="container-imgen_detalle">
+            <img src="{{producto.imagen.url}}" /> 
+        </div>
+        <div class="container-info-product">
+            <div class="container-title">{{producto.nombre}}</div>
+            <div class="container-price">
+                <span>Precio: CLP{{ producto.precio }}</span>
+            </div>
+
+            <div class="container-stock">
+                <span>Stock: {{ producto.stock }}</span>
+            </div>
+
+            <div class="container-category">
+                <span>Categoría: {{ producto.categoria }}</span>
+            </div>
+
+            <div class="container-description">
+                <div class="title-description">
+                    <h4>Detalle</h4>
+                </div>
+                <div class="text-description">
+                    <p>
+                        {{producto.descripcion}}
+                    </p>
+                </div>
+            </div>
+            
+
+            <div class="container-details-product">
+                    <a href="{% url 'añadir' producto.id %}" class="btn " type="button">
+                        Añadir al carrito
+                    </a>
+            </div>
+        
+        </div>
+    </main>
+</div>
+
+{% endblock %}

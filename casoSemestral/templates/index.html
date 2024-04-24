@@ -1,6 +1,31 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base3.html' %}
 
 {% block content %}
-    <h2>Hola</h2>
+
+    <div class="products" id="Products">
+        <h1>Productos</h1>
+        <div class="box">
+            {% for producto in productos %}
+            <div class="card">
+                <div class="small_card">
+                   
+                </div>
+    
+                <div class="image">
+                    <img src="{{producto.imagen.url}}" >
+                </div>
+    
+                <div class="products_text">
+                    <h2>{{producto.nombre}}</h2>
+                    <h3>CLP{{producto.precio}}</h3>
+                    <p> {{producto.stock}}  restantes</p>
+                    <a href="{% url 'detalle' producto.id %}" class="btn" type="button">Detalles</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div style="height: 100px;"></div> <!-- Espacio vacío para separar los productos del footer -->
 
 {% endblock %}

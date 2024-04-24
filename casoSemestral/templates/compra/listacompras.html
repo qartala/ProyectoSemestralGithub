@@ -1,0 +1,37 @@
+{% extends '../base/base.html' %}
+
+{% block content %}
+
+<div>
+<div class="card" style="margin-top: 20%;">
+
+    {% if ordenes %}
+        <h2>Ordenes de compra </h2>
+        {% for orden in ordenes %}
+        <ul>
+            <li>Datos de la compra N° {{orden.id}}</li>
+            <li>Fecha de compra {{orden.f_compra}}</li>
+            <li>Total {{orden.total}}</li>
+            <li>Comuna de entrega {{orden.comuna}}</li>
+            <li>Direccion de entrega {{orden.direccion}}</li>
+            <li>Estado de envio {{orden.estado}}</li>
+            {% for compra in orden.compraproducto_set.all %}
+            <li>nombre del producto {{compra.nombre}}</li>
+            <li>cant del producto {{compra.cantidad}}</li>
+            <li>subtotal del producto{{compra.subtotal}}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+  
+</div>
+</div>
+{% else %}
+<div class="mensaje"> 
+    <h2>  <i class="fas fa-shopping-bag"></i>
+        {{mensaje}}</h2>
+</div>
+{% endif %}
+
+<div class="parteAbajo" style="height: 324px;"></div> <!-- Espacio vacío para separar los productos del footer -->
+
+{% endblock %}

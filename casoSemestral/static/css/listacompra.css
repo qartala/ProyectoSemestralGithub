@@ -1,0 +1,17 @@
+.mensaje{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    background: linear-gradient(to right, #e61da6, #6e09e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    height: 40vh; /* Para ocupar toda la altura de la pantalla */
+
+}
+
+.mensaje h2{
+    text-align: center; /* Para centrar el texto horizontalmente */
+   
+   }
+
