@@ -2,7 +2,6 @@
 
 {% block content %}
 
-<div>
 <div class="card" style="margin-top: 20%;">
 
     {% if ordenes %}
@@ -22,16 +21,11 @@
             {% endfor %}
         </ul>
         {% endfor %}
-  
-</div>
-</div>
-{% else %}
-<div class="mensaje"> 
-    <h2>  <i class="fas fa-shopping-bag"></i>
-        {{mensaje}}</h2>
-</div>
-{% endif %}
+    {% else %}
+        <h2>{{mensaje}}</h2>
 
-<div class="parteAbajo" style="height: 324px;"></div> <!-- Espacio vacío para separar los productos del footer -->
-
+    {% endif %}
+    
+   
+</div>
 {% endblock %}

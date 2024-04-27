@@ -25,32 +25,7 @@ html{
 }
 
 
-sectionn .main .button {
-    position: absolute;
-    left: 12%;
-    padding: 10px 20px;
-    border-radius: 40px;
-    background: linear-gradient(to right, #c72092, #000000);
-}
-
-
-sectionn .main .button a {
-    color: white;
-    text-decoration: none;
-}
-
-
-sectionn .main .button i {
-    color: white;
-    margin-left: 5px;
-    transition: 0.3s;
-}
-
-
-sectionn .main .button:hover i {
-    transform: translateX(6px);
-}
-sectionn nav{
+ nav{
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -63,7 +38,7 @@ sectionn nav{
     z-index: 100;
 }
 
-sectionn nav .logo{
+nav .logo{
     font-size: 35px;
     color: #941c70; 
     margin: 5px 0;
@@ -71,41 +46,41 @@ sectionn nav .logo{
     position: relative;
     left: -4%;
 }
-
-sectionn nav .logo span{
+nav .logo span{
     color: #470097;
     text-decoration: underline;
 }
 
-sectionn nav ul{
+nav ul{
     list-style: none;
 }
 
-sectionn nav ul li{
+nav ul li{
     display: inline-block;
     margin: 5px 15px;
 }
 
-sectionn nav ul li a{
+nav ul li a{
     text-decoration: none;
     color: black;
     transition: 0.2s;
 }
 
-sectionn nav ul li a:hover{
+nav ul li a:hover{
     color: #c72092;
 }
 
-sectionn nav .icons i{
+nav .icons i{
     margin: 0 4px;
     cursor: pointer;
     font-size: 18px;
     transition: 0.3s;
 }
 
-sectionn nav .icons i:hover{
+nav .icons i:hover{
     color: #c72092;
 }
+ 
 
 
 

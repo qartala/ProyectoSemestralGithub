@@ -16,7 +16,7 @@
     justify-content: flex-start; /* Alinea la imagen al lado izquierdo */
     align-items: center; /* Centra verticalmente */
     position: relative;
-    width: 75%; /* Reduzco el ancho para dejar espacio a la información del producto */
+    width: 65%; /* Reduzco el ancho para dejar espacio a la información del producto */
 
 } 
 
@@ -47,11 +47,11 @@
 	padding: 30px 0;
 }
 
-.container-details-product .btn {
-	text-decoration: none;
+.btn {
+  
     padding: 10px 20px;
     background: linear-gradient(to right, #c72092 , #6c14d0);
-    color: white;  
+    color: white;    
 }
 
 

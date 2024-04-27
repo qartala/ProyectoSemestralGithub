@@ -1,4 +1,3 @@
-
 from django.shortcuts import render,redirect,get_object_or_404 
 from modulos.productos.forms import productoForm
 from modulos.productos.models import Producto,Carrito, OrdenCompra,compraProducto, comunas_santiago
@@ -8,6 +7,7 @@ from django.urls import reverse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 import sweetify
+
 # Create your views here.
 
 @login_required
@@ -98,24 +98,22 @@ def añadirCarrito(request, id ):
     usuario = User.objects.get(id = request.user.id)
     producto = Producto.objects.get(id = id)
     
-
+    
     try:
-        # Ya hay carrito para el producto
-        carrito = Carrito.objects.get(producto=id, usuario=request.user.id)
-        carrito.cantidad += 1 
-        carrito.subtotal = carrito.cantidad * producto.precio
+        #Ya hay carrito para el producto
+        carrito = Carrito.objects.get(producto = id, usuario =request.user.id)
+        carrito.cantidad = carrito.cantidad + 1 
+        carrito.subtotal = (carrito.cantidad * producto.precio)
         carrito.save()
-        sweetify.success(request, 'Producto añadido al carrito', icon='success', persistent='Aceptar')
 
     except Exception:
-        # No hay carrito para el producto
-        carrito = Carrito()
+        #No hay carrito para el producto
+        carrito= Carrito()
         carrito.cantidad = 1 
         carrito.subtotal = producto.precio
         carrito.producto = producto
         carrito.usuario = usuario
         carrito.save()
-        sweetify.success(request, 'Producto añadido al carrito', icon='success', persistent='Aceptar')
 
     return redirect('index')
 

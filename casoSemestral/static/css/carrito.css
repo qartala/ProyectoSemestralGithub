@@ -1,7 +1,6 @@
 .cart {
     max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    padding: 40px;
     display: flex;
     justify-content: space-between;
 }
@@ -55,50 +54,24 @@
 }
 
 .cart-total {
-
+    margin-left: 40px;
     text-align: right;
-    margin-right: 270px;
 }
 
 .cart-total a {
     display: inline-block;
     margin-left: 10px;
     padding: 5px 10px;
-    text-decoration: none;
-    padding: 10px 20px;
-    background: linear-gradient(to right, #c72092 , #6c14d0);
-    color: white;
+    background-color: #1e90ff;
+    color: #fff;
     text-decoration: none;
     border-radius: 3px;
-   
- 
 }
 
-
+.cart-total a:hover {
+    background-color: #007acc;
+}
 
 .close {
     cursor: pointer;
-}
-.totalPag h2{
-    margin-right: 14%; 
-    padding: 50px 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end; /* Para alinear los elementos a la derecha */
-
-}
-
-.main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-    background: linear-gradient(to right, #e61da6, #6e09e1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    height: 40vh; /* Para ocupar toda la altura de la pantalla */
-}
-
-.main h2 {
-    text-align: center; /* Para centrar el texto horizontalmente */
 }

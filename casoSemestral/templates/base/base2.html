@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
 
 <head>
@@ -8,36 +7,9 @@
     <title>DonJoshua</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/baseadmin.css' %}">
-        
 </head>
 
-<body> 
-    <section>
-        <nav>
-            <div class="logo">
-            <input type="checkbox" id="MENU-TOGGLE">
-            <label for="MENU-TOGGLE" >
-            
-                <h1>Admi<span>nistrador</span></h1>
-                <span> </span>
-            </label>
-            <ul class="MENU">
-                <li><a href="{% url 'listar' %}">Listado de productos</a></li>
-                <li><a href="{% url 'agregar'%}">Agregar producto</a></li>
-                <li><a href="{% url 'registrarAdmin' %}">Agregar Admin</a></li>
-                <li><a href="{% url 'cerrar' %}">Cerra Sesion</a></li>
-            </ul>
-            </div>
-        
-         
-           
-        </nav>
-        
-
-    </section>
-    
-    
+<body>
 
     <main class="container">
 
@@ -45,6 +17,20 @@
         <div class="row">
 
             <!-- Parte izquierda -->
+
+
+            <div class="col-sm-12 col-md-5 col-lg-3 col-xl-3 mt-2">
+
+                <div class="list-group">
+                    <a href="{% url 'listar' %}" class="list-group-item list-group-item-action">Listado de productos</a>
+                    <a href="{% url 'agregar'%}" class="list-group-item list-group-item-action">Agregar producto</a>
+                    <a href="#" class="list-group-item list-group-item-action">Otros</a>
+                    <a href="{% url 'registrarAdmin' %}" class="list-group-item list-group-item-action">Agregar Admin</a>
+                    <a href="{% url 'cerrar' %}" class="list-group-item list-group-item-action">Cerra Sesion</a>
+                </div>
+
+            </div>
+
 
 
             <!-- Fin Parte izquierda -->
