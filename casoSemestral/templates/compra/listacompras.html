@@ -13,12 +13,19 @@
             <li>Total {{orden.total}}</li>
             <li>Comuna de entrega {{orden.comuna}}</li>
             <li>Direccion de entrega {{orden.direccion}}</li>
+
             <li>Estado de envio {{orden.estado}}</li>
+            
+            {% if orden.estado == "En bodega" %}
+            <li>Estado de envio {{orden.estado}} <i class="fa-solid fa-filter"></i></li>
+            {% endif %}
+
             {% for compra in orden.compraproducto_set.all %}
             <li>nombre del producto {{compra.nombre}}</li>
             <li>cant del producto {{compra.cantidad}}</li>
             <li>subtotal del producto{{compra.subtotal}}</li>
             {% endfor %}
+
         </ul>
         {% endfor %}
     {% else %}
