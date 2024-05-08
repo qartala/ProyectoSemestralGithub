@@ -34,7 +34,6 @@ compra almacenadas, un botón home, y un botón cerrar sesión.
 
 **Licencia:**
 
-
 Licencia MIT
 
 Copyright (c) [2024] [GameStore]
@@ -44,7 +43,8 @@ Por la presente se concede permiso, sin coste alguno, a cualquier persona que ob
 El aviso de derechos de autor anterior y este aviso de permiso se incluirán en todos
 copias o partes sustanciales del Software.
 
-EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITAS, INCLUYENDO PERO NO LIMITADO A LAS GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO EL LOS AUTORES O TITULARES DE DERECHOS DE AUTOR SERÁN RESPONSABLES DE CUALQUIER RECLAMACIÓN, DAÑOS U OTROS RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE OTRA MANERA, QUE SURJA DE, FUERA DE O EN RELACIÓN CON EL SOFTWARE O EL USO U OTRAS NEGOCIOS EN EL SOFTWARE.
+El software se proporciona "tal cual", sin garantía de ningún tipo, expresa o implícita, incluyendo pero no limitado a las garantías de comerciabilidad, idoneidad para un fin particular y no infracción. En ningún caso el los autores o titulares de derechos de autor serán responsables de cualquier reclamación, daños u otros responsabilidad, ya sea en una acción de contrato, agravio o de otra manera, que surja de, fuera de o en relación con el software o el uso u otras negocios en el software.
+
 
 
 
