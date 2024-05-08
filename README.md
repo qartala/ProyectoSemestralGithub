@@ -32,7 +32,7 @@ compra almacenadas, un botón home, y un botón cerrar sesión.
 
 
 
-**Licencia**
+**Licencia:**
 
 
 Licencia MIT
