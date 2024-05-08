@@ -34,7 +34,6 @@ compra almacenadas, un botón home, y un botón cerrar sesión.
 
 **Licencia**
 
-En este apartado se tiene la licencia con la que va a contar el proyecto.
 
 Licencia MIT
 
