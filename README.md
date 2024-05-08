@@ -2,7 +2,7 @@
 
 **Contexto del caso**:
 
-Para este proyecto se hará una página web creada en Django versión 5.0.4 utilizando Python versión 3.12.2 y la base de datos sql server, el sitio web venderá productos tecnológicos  por ejemplo: celulares,  placas madres, monitores,videojuegos,  Juegos ,consolas, etc.
+Para este proyecto se hará una página web creada en Django versión 5.0.4 utilizando Python versión 3.12.3 y la base de datos sql server, el sitio web venderá productos tecnológicos  por ejemplo: celulares,  placas madres, monitores,videojuegos,  Juegos ,consolas, etc.
 
 Los requerimientos que cumplirá el sitio web serán los siguientes:
 
