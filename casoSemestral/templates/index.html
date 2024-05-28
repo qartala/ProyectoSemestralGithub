@@ -4,34 +4,45 @@
 {% block content %}
 
 
-    <div class="products" id="Products">
-        <h1>Productos</h1>
-        <div class="box">
-            {% for producto in productos %}
+<div class="products" id="Products">
+    <h1>Productos</h1>
+    <div class="box">
+        {% for producto in page_obj %}
             <div class="card">
                 <div class="small_card">
-                   
+
                 </div>
-   
+
                 <div class="image">
-                    <img src="{{producto.imagen.url}}" >
+                    <img src="{{producto.imagen.url}}">
                 </div>
-   
+
                 <div class="products_text">
                     <h2>{{producto.nombre}}</h2>
                     <h3>CLP{{producto.precio}}</h3>
-                    <p> {{producto.stock}}  restantes</p>
+                    <p> {{producto.stock}} restantes</p>
                     <a href="{% url 'detalle' producto.id %}" class="btn" type="button">Detalles</a>
                 </div>
             </div>
-            {% endfor %}
-        </div>
+        {% endfor %}
     </div>
+</div>
 
 
-    <div style="height: 100px;"></div> <!-- Espacio vacío para separar los productos del footer -->
+<div style="height: 100px;"></div> <!-- Espacio vacío para separar los productos del footer -->
 
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a href="?page=1">&laquo; Primera</a>
+        <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        {% endif %}
+        <span class="current">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.</span>
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+        <a href="?page={{ page_obj.paginator.num_pages }}">Última &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 
 {% endblock %}
-
-

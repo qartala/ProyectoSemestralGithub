@@ -7,18 +7,20 @@ from django.urls import reverse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 import sweetify
-
+from django.core.paginator import Paginator
 # Create your views here.
 
 @login_required
 def listarProd(request):
     productos = Producto.objects.all()
+    paginator = Paginator(productos, 10)  # Divide los productos en páginas de 6 elementos cada una
+    page_number = request.GET.get('page')  # Obtiene el número de página actual desde la URL
+    page_obj = paginator.get_page(page_number)  # Obtiene la página actual
 
     datos = {
-        'productos':productos
+        'page_obj': page_obj
     }
-    return render(request,'productos/listar.html',datos)
-
+    return render(request, 'productos/listar.html', datos)
 
 
 

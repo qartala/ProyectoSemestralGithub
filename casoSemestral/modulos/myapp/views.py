@@ -3,17 +3,30 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from modulos.productos.models import Producto
+from django.core.paginator import Paginator
 import sweetify 
 
 
 # Create your views here.
 
+# def index(request):
+#     productos = Producto.objects.all()
+#     datos = {
+#         'productos':productos
+#     }
+#     return render(request,'index.html',datos)
+
 def index(request):
     productos = Producto.objects.all()
+    paginator = Paginator(productos, 8)  # Divide los productos en páginas de 6 elementos cada una
+    page_number = request.GET.get('page')  # Obtiene el número de página actual desde la URL
+    page_obj = paginator.get_page(page_number)  # Obtiene la página actual
+
     datos = {
-        'productos':productos
+        'page_obj': page_obj
     }
-    return render(request,'index.html',datos)
+    return render(request, 'index.html', datos)
+
 
 
 def registrarse(request):
