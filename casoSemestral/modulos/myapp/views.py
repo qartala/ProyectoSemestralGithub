@@ -18,7 +18,7 @@ import sweetify
 
 def index(request):
     productos = Producto.objects.all()
-    paginator = Paginator(productos, 6)  # Divide los productos en páginas de 6 elementos cada una
+    paginator = Paginator(productos, 8)  # Divide los productos en páginas de 6 elementos cada una
     page_number = request.GET.get('page')  # Obtiene el número de página actual desde la URL
     page_obj = paginator.get_page(page_number)  # Obtiene la página actual
 
