@@ -5,16 +5,7 @@ from django.contrib.auth.decorators import login_required
 from modulos.productos.models import Producto
 from django.core.paginator import Paginator
 import sweetify 
-
-
-# Create your views here.
-
-# def index(request):
-#     productos = Producto.objects.all()
-#     datos = {
-#         'productos':productos
-#     }
-#     return render(request,'index.html',datos)
+from django.views import generic
 
 def index(request):
     productos = Producto.objects.all()
@@ -91,3 +82,13 @@ def iniciar_sesion(request):
 def cerrar_sesion(request):
     logout(request)
     return redirect('index')
+
+
+
+def buscar(request):
+    query = request.GET.get('query')
+    if query:
+        productos = Producto.objects.filter(nombre__icontains=query)
+    else:
+        productos = Producto.objects.all()
+    return render(request, 'productos/buscar.html', {'productos': productos})
