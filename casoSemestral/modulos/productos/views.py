@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404 
 from modulos.productos.forms import productoForm
-from modulos.productos.models import Producto,Carrito, OrdenCompra,compraProducto, comunas_santiago
+from modulos.productos.models import Favorito, Producto,Carrito, OrdenCompra,compraProducto, comunas_santiago
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -87,13 +87,38 @@ def cerrarSesion(request):
 def detalleProd(request, id ):
     if request.method  == 'GET':
         producto  =get_object_or_404(Producto, id = id) 
+
+        usuario = request.user
+        es_favorito = Favorito.objects.filter(usuario=usuario, producto=producto).exists()
         datos = {
-            'producto': producto
+            'producto': producto,
+            'favorito':es_favorito
         }
 
         return render(request, 'productos/detalleProd.html',datos)
     else:
         pass
+
+def agregar_favorito(request, id):
+    usuario = request.user
+    producto = Producto.objects.get(pk=id)
+
+    Favorito.objects.create(usuario=usuario, producto=producto)
+
+    return redirect(reverse('detalle', kwargs={'id': id}))
+
+@login_required
+def quitar_favorito(request, id):
+    usuario = request.user
+    producto = Producto.objects.get(pk=id)
+
+
+    favorito = Favorito.objects.filter(usuario=usuario, producto=producto)
+
+    favorito.delete()
+    return redirect(reverse('detalle', kwargs={'id': id}))
+
+
 
 @login_required
 def añadirCarrito(request, id ):

@@ -24,6 +24,20 @@
                 <span>Precio: CLP{{ producto.precio }}</span>
             </div>
 
+            <h2>{{producto.id}}</h2>
+            {% if favorito %}
+            <div class="container-category">
+                <span> <a href="{% url 'quitar_fav' producto.id %}">Quitar de favoritos <i class="fa-solid fa-heart"></i></a></span>
+            </div>
+
+            {% else %}
+            <div class="container-category">
+                <span> <a href="{% url 'guardarFavorito' producto.id %}">Guardar en favoritos <i class="fa-regular fa-heart"></i></a></span>
+            </div>
+
+            {% endif %}
+
+           
 
             <div class="container-stock">
                 <span>Stock: {{ producto.stock }}</span>
