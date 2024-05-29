@@ -17,6 +17,9 @@ urlpatterns = [
     path('listacompras',views.listaOrdenes,name='listaCompras'),
     path('omega',views.eliminarLOl,name='omega'),
     path('guardar_favorito/<int:id>',views.agregar_favorito,name='guardarFavorito'),
-    path('quitar_favorito/<int:id>',views.quitar_favorito,name="quitar_fav")
+    path('quitar_favorito/<int:id>',views.quitar_favorito,name="quitar_fav"),
+    path('favoritos',views.favoritos,name="favoritos"),
+    
+
    
 ]

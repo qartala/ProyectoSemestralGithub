@@ -1,0 +1,45 @@
+{% extends 'base/base3.html' %}
+
+{% block content %}
+
+
+    <h1>Resultados de la búsqueda</h1>
+
+    <div class="products" id="Products">
+        <h1>Productos</h1>
+        <div class="box">
+           
+        {% if productos %}
+        {% for producto in productos %}
+
+
+
+            <div class="card">
+                <div class="small_card">
+
+                </div>
+
+                <div class="image">
+                    <img src="{{producto.imagen.url}}">
+                </div>
+
+                <div class="products_text">
+                    <h2>{{producto.nombre}}</h2>
+                    <h3>CLP{{producto.precio}}</h3>
+                    <p> {{producto.stock}} restantes</p>
+                    <a href="{% url 'detalle' producto.id %}" class="btn" type="button">Detalles</a>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% else %}
+        <p>No se encontraron resultados para la búsqueda.</p>
+    {% endif %}
+    
+            
+        </div>
+    </div>
+    
+    
+{% endblock %}
+

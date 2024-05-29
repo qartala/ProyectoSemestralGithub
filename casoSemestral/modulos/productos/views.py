@@ -277,3 +277,11 @@ def eliminarLOl(request):
     ordenes = OrdenCompra.objects.filter(usuario = request.user.id)
     ordenes.delete()
     return redirect('index')
+
+
+
+@login_required
+def favoritos(request):
+    favoritos = Favorito.objects.filter(usuario=request.user)
+    productos_favoritos = Producto.objects.filter(id__in=[favorito.producto_id for favorito in favoritos])
+    return render(request, 'productos/favoritos.html', {'productos_favoritos': productos_favoritos})
