@@ -24,7 +24,7 @@
 
 
 .container-imgen_detalle img {
-    width: 75%; /* Hace que la imagen ocupe todo el ancho del contenedor */
+    width: 70%; /* Hace que la imagen ocupe todo el ancho del contenedor */
     height: 380px; /* Ajusta la altura de todas las imágenes */
 }
 
@@ -48,6 +48,7 @@
     font-size: 24px;
     font-weight: 300;
 }
+
 
 
 .container-details-product {
@@ -133,6 +134,7 @@
 .container-category{
     border-bottom: 1px solid #e4e4e4;
 }
+
 
 
 

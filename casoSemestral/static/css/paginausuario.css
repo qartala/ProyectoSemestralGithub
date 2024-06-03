@@ -1,0 +1,40 @@
+.paginacioncompleto{
+    
+}
+.custom-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8.8px;
+}
+
+.custom-step-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-page-link {
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(to right, #c72092 , #6c14d0);
+    padding: 5px 9px;
+    border: none;
+    border-radius: 50px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.custom-page-link:hover {
+    background: linear-gradient(to right, #6c14d0,  #c72092);
+  
+}
+
+.custom-current-page {
+    padding: 5px 9px;
+    border: 1px solid #6c757d;
+    border-radius: 50px;
+    background-color: #f9f8fa;
+    color: #716c7d;
+}

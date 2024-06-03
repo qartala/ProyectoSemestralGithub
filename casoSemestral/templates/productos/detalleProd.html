@@ -20,18 +20,17 @@
         </div>
         <div class="container-info-product">
             <div class="container-title">{{producto.nombre}}</div>
+            <br>
             <div class="container-price">
                 <span>Precio: CLP{{ producto.precio }}</span>
             </div>
 
-            <h2>{{producto.id}}</h2>
             {% if favorito %}
-            <div class="container-category">
+            <div class="produfavorito">
                 <span> <a href="{% url 'quitar_fav' producto.id %}">Quitar de favoritos <i class="fa-solid fa-heart"></i></a></span>
             </div>
-
             {% else %}
-            <div class="container-category">
+            <div class="produquitar">
                 <span> <a href="{% url 'guardarFavorito' producto.id %}">Guardar en favoritos <i class="fa-regular fa-heart"></i></a></span>
             </div>
 

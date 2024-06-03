@@ -1,0 +1,23 @@
+/* General link styling to remove blue color and underline */
+.produfavorito a, .produquitar a {
+    color: black; /* Set link color to black */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Optional: Set a standard font size */
+}
+
+/* Add hover effect for better user experience */
+.produfavorito a:hover, .produquitar a:hover {
+    text-decoration: none; /* Remove underline on hover */
+    color: #333; /* Optional: Darken color slightly on hover */
+}
+
+/* Specific styling for the heart icons */
+.produfavorito i {
+    color: red; /* Color for the heart icon in produfavorito */
+    margin-left: 5px; /* Optional: Space between text and icon */
+}
+
+.produquitar i {
+    color: grey; /* Color for the heart icon in produquitar */
+    margin-left: 5px; /* Optional: Space between text and icon */
+}

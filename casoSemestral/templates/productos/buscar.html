@@ -3,10 +3,11 @@
 {% block content %}
 
 
-    <h1>Resultados de la búsqueda</h1>
+    
 
     <div class="products" id="Products">
-        <h1>Productos</h1>
+        
+        <h1 class="resultado">Resultados de la búsqueda</h1>
         <div class="box">
            
         {% if productos %}
@@ -33,7 +34,7 @@
 
         {% endfor %}
     {% else %}
-        <p>No se encontraron resultados para la búsqueda.</p>
+        <p class="busquedanada" >No se encontraron nada....</p>
     {% endif %}
     
             

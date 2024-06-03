@@ -132,6 +132,8 @@ def añadirCarrito(request, id ):
         carrito.cantidad = carrito.cantidad + 1 
         carrito.subtotal = (carrito.cantidad * producto.precio)
         carrito.save()
+        sweetify.success(request, 'Producto añadido al carrito', icon='success', persistent='Aceptar')
+
 
     except Exception:
         #No hay carrito para el producto
@@ -141,6 +143,7 @@ def añadirCarrito(request, id ):
         carrito.producto = producto
         carrito.usuario = usuario
         carrito.save()
+        sweetify.success(request, 'Producto añadido al carrito', icon='success', persistent='Aceptar')
 
     return redirect('index')
 

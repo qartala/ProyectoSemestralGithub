@@ -1,14 +1,18 @@
 body {
     display: flex;
+   
 }
 
 nav {
     width: 280px;
     background-image: url(/static/assets/prob.jpg);
-    color: white;
+    color: rgb(255, 255, 255);
     height: 100vh;
-    padding-top: 25px;
+    padding-top: 50px;
+    position: fixed; 
+    overflow-y: auto; /* Añadido para que el contenido dentro del nav sea desplazable si es necesario */
 }
+
 
 nav ul {
     list-style-type: none;
@@ -16,19 +20,65 @@ nav ul {
 }
 
 nav ul li {
-    padding: 10px;
+    padding: 30px;
 }
 
-nav ul li a {
+
+.btn_listarproduc{
+    background: linear-gradient(to right, #c72092 , #6c14d0);
+    text-decoration: none; /* Cambiado a 'none' para quitar el subrayado */
     color: white;
-    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    padding: 15px 20px; /* Ajusta el padding para controlar el tamaño del botón */
+
+ 
+}
+.btn_listarproduc:hover {
+    background: linear-gradient(to right, #6c14d0, #c72092); /* Efecto de cambio de color al pasar el cursor */
 }
 
-main {
-    flex: 1;
+.btn_adminAgregaProduc{
+    background: linear-gradient(to right, #c72092 , #6c14d0);
+    text-decoration: none; /* Cambiado a 'none' para quitar el subrayado */
+    color: white;
+    display: inline-block;
+    text-align: center;
+    padding: 15px 20px; /* Ajusta el padding para controlar el tamaño del botón */
+ 
+}
+.btn_adminAgregaProduc:hover {
+    background: linear-gradient(to right, #6c14d0, #c72092); /* Efecto de cambio de color al pasar el cursor */
+}
+.btn_adminagregaadmin{
+    background: linear-gradient(to right, #c72092 , #6c14d0);
+    text-decoration: none; /* Cambiado a 'none' para quitar el subrayado */
+    color: white;
+    display: inline-block;
+    text-align: center;
+    padding: 15px 20px; /* Ajusta el padding para controlar el tamaño del botón */
+ 
+}
+.btn_adminagregaadmin:hover {
+    background: linear-gradient(to right, #6c14d0, #c72092); /* Efecto de cambio de color al pasar el cursor */
+}
+.btn_admincerrar{
+    background: linear-gradient(to right, #c72092 , #6c14d0);
+    text-decoration: none; /* Cambiado a 'none' para quitar el subrayado */
+    color: white;
+    display: inline-block;
+    text-align: center;
+    padding: 15px 20px; /* Ajusta el padding para controlar el tamaño del botón */
+
+}
+.btn_admincerrar:hover {
+    background: linear-gradient(to right, #6c14d0, #c72092); /* Efecto de cambio de color al pasar el cursor */
 }
 
 .container {
-    padding-top: 20px;
+    margin-left: 40vh ;
+    
 }
+
+
 

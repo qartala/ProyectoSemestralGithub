@@ -214,13 +214,6 @@ section .main .button:hover i{
 
 
 
-
-
-
-
-
-
-
 /*Products*/
 .products{
     width: 100%;
@@ -322,7 +315,7 @@ section .main .button:hover i{
     height: 45px;
     border-radius: 5px;
     font-size: 18px;
-    margin: 2px 0;
+    margin: 5px 0;
     line-height: 40px;
     border: 2px solid #999999;
     transition: 0.2s;
@@ -369,10 +362,6 @@ section .main .button:hover i{
 .products .box .card .products_text{
     margin-top: auto;
 }
-
-
-
-
 
 
 /*Services*/
