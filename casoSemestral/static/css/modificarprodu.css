@@ -1,0 +1,59 @@
+
+.anchormodificarproduc{
+    flex: 0 0 auto;
+    width: 95%; 
+    
+}
+
+.titulomodificarproduc {
+    font-size: 55px;
+    color: #1a06b4; 
+    margin: 15px 0;
+    cursor: pointer;
+    position: relative;
+  
+}
+
+.form_modificarprodu {
+    border: 2px solid #6c14d0; /* Agrega un borde sólido de 2px */
+    box-shadow: 0 0 8px #6c14d0; /* Aplica sombra a toda la tabla */
+    padding: 15px;
+    
+    
+}
+
+
+.btn_modificarprodu{
+    
+    padding: 10px 20px;
+    background: linear-gradient(to right, #c72092 , #6c14d0);
+    color: white;
+    text-align: center;
+    border-radius: 10px; /* Ajusta este valor según lo redondeado que quieras el botón */
+    margin-top: 1vh; 
+    width: 80vh;  
+   
+}
+.btn_modificarprodu:hover {
+    background: linear-gradient(to right, #6c14d0, #c72092); /* Efecto de cambio de color al pasar el cursor */
+}
+
+.btn_eliminarprodu{
+    
+    padding: 10px 20px;
+    background: #c82333; /* Efecto de cambio de color al pasar el cursor */
+    text-align: center;
+    border-radius: 10px; /* Ajusta este valor según lo redondeado que quieras el botón */
+    margin-top: 1vh; 
+    width: 80vh;  
+   
+}
+.btn_eliminarprodu:hover{
+    background: #ff051e; /* Efecto de cambio de color al pasar el cursor */
+}
+.btns_centromodielimi{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px; /* Ajusta según necesites */
+    
+}

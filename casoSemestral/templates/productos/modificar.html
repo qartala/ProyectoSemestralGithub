@@ -2,20 +2,19 @@
 
 {% block content %}
 
-<div class="col-sm-12 col-md-7 col-lg-8 col-xl-8">
+<div class="anchormodificarproduc col-sm-12 col-md-7 col-lg-8 col-xl-8">
     
-
     <h3 class="text-center">{{error}}</h3>
-
-        <form action="" method="post" class="card card-body mt-5" enctype="multipart/form-data">
-            <h2 class=" text-center">Modificar</h2>
+    <h2 class="titulomodificarproduc text-center">Modificar</h2>
+        <form action="" method="post" class="form_modificarprodu card card-body mt-5" enctype="multipart/form-data">      
             {% csrf_token %}
             {{formulario}}
            
-
-            <button class="btn btn-primary mt-2">Modificar</button>
-            <a href="{% url 'eliminar' idprod %}" class="btn btn-danger mt-2">Eliminar</a>
-          
+           <div class="btns_centromodielimi">
+            <button class="btn_modificarprodu btn btn-primary mt-2">Modificar</button>
+            <a href="{% url 'eliminar' idprod %}" class="btn_eliminarprodu btn btn-danger mt-2">Eliminar</a>
+           </div>
+                    
         </form>
            
 </div>

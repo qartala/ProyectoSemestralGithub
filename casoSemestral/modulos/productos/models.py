@@ -61,3 +61,14 @@ class compraProducto(models.Model):
     subtotal = models.IntegerField(validators=[MinValueValidator(1)])
     nombre = models.CharField(max_length=30,default='')
     compra = models.ForeignKey(OrdenCompra,on_delete=models.CASCADE)
+
+
+class Favorito(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('usuario', 'producto')
+
+    def __str__(self):
+        return f'{self.usuario.username} - {self.producto.nombre}'

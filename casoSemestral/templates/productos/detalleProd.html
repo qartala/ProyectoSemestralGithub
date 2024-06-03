@@ -1,15 +1,75 @@
 {% extends '../base/base.html' %}
-
+{% load sweetify %}
 {% block content %}
 
 
-<div class="card" style="margin-top: 10%;">
-    <h2 >{{producto.nombre}}</h2>
-    <p>{{producto.descripcion}}</p>
 
-    <a href="{% url 'añadir' producto.id %}">Añadir al carrito</a>
+
+<span><h4>{{ mensaje }} </h4></span>
+
+
+<div class="main-content">
+
+
+
+
+    <main class="info-product">
+       
+        <div class="container-imgen_detalle">
+            <img src="{{producto.imagen.url}}" />
+        </div>
+        <div class="container-info-product">
+            <div class="container-title">{{producto.nombre}}</div>
+            <br>
+            <div class="container-price">
+                <span>Precio: CLP{{ producto.precio }}</span>
+            </div>
+
+            {% if favorito %}
+            <div class="produfavorito">
+                <span> <a href="{% url 'quitar_fav' producto.id %}">Quitar de favoritos <i class="fa-solid fa-heart"></i></a></span>
+            </div>
+            {% else %}
+            <div class="produquitar">
+                <span> <a href="{% url 'guardarFavorito' producto.id %}">Guardar en favoritos <i class="fa-regular fa-heart"></i></a></span>
+            </div>
+
+            {% endif %}
+
+           
+
+            <div class="container-stock">
+                <span>Stock: {{ producto.stock }}</span>
+            </div>
+
+
+            <div class="container-category">
+                <span>Categoría: {{ producto.categoria }}</span>
+            </div>
+
+
+            <div class="container-description">
+                <div class="title-description">
+                    <h4>Detalle</h4>
+                </div>
+                <div class="text-description">
+                    <p>
+                        {{producto.descripcion}}
+                    </p>
+                </div>
+            </div>
+           
+
+
+            <div class="container-details-product">
+                    <a href="{% url 'añadir' producto.id %}" class="btn " type="button">
+                        Añadir al carrito
+                    </a>
+            </div>
+       
+        </div>
+    </main>
 </div>
-
 
 
 {% endblock %}

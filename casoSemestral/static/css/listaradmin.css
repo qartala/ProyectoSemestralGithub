@@ -1,0 +1,48 @@
+/* Estilo para la tabla */
+table {
+    width: 10%;
+    border-collapse: collapse;
+    box-shadow: 0 0 8px #6c14d0; /* Aplica sombra a toda la tabla */
+    border: 2px solid #6c14d0; /* Agrega un borde sólido de 2px */
+}
+
+/* Estilo para el título de la tabla */
+.text-center {
+    font-size: 55px;
+    color: #1a06b4; 
+    margin: 15px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Estilo para los botones de editar */
+.btnEditar {
+    text-decoration: none;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #c72092 , #6c14d0);
+    color: white;
+    display: inline-block;
+    text-align: center;
+    border-radius: 10px; /* Ajusta este valor según lo redondeado que quieras el botón */
+    transition: background-color 0.3s; /* Transición suave para el cambio de color de fondo */
+}
+
+.btnEditar:hover {
+    background-color: #1a06b4; /* Cambia el color de fondo al pasar el mouse */
+}
+
+/* Estilo para las celdas de la tabla */
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f5f5f5; /* Establece un color de fondo alternativo para las filas impares */
+}
+
+/* Estilo para las imágenes en las celdas de la tabla */
+.table-striped tbody tr td img {
+    width: 60px;
+    height: 50px;
+    object-fit: cover; /* Ajusta el tamaño de la imagen manteniendo la relación de aspecto */
+}
+
+
+
+
