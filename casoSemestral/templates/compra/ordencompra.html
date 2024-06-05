@@ -1,15 +1,15 @@
 {% extends '../base/base.html' %}
 
 {% block content %}
-<div class="card" style="margin-top: 20%;">
-    <h3>{{error}}</h3>
-    <h2>Total a pagar {{total}}</h2>
+<div class=" ordencomp card" >
+    <h3 class=" ordenmensaje mensaje">{{error}}</h3>
+    <h2 class="totalpagar">Total a pagar {{total}}</h2>
 
     <form action="" method="post">
         {% csrf_token %}
 
-        <select class="form-control" name="comuna" id="comuna"  placeholder=" Seleccione una promocion"required>
-            <option value="">
+        <select class="formulaorden form-control" name="comuna" id="comuna"  placeholder=" Seleccione una promocion"required>
+            <option clase="comuna" value="">
                 Selecciona la comuna
             </option>
             {% for com in comunas%}
@@ -18,15 +18,15 @@
         </select>
 
         <div>
-            <input type="text" name="direccion" id="direccion" placeholder="Ingresa la direccion de entrega">
+            <input class="direccionorden" type="text" name="direccion" id="direccion" placeholder="Ingresa la direccion de entrega">
         </div>
 
         <div>
-            <input type="text" name="recibe" id="recibe" placeholder="Ingresa quien recibira ">
+            <input class="recibaorden" type="text" name="recibe" id="recibe" placeholder="Ingresa quien recibira ">
         </div>
 
 
-        <button>Realizar compra</button>
+        <button class="btn_realizacomp">Realizar compra</button>
 
     </form>
 </div>
