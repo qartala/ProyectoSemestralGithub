@@ -1,0 +1,47 @@
+{% extends '../base/base2.html' %}
+{% block content%}
+
+    <div class="table">
+        
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <h1 class="text-center">Envio de compras</h1>
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Usuario</th>
+                        <th>Fecha compra</th>
+                        <th>Total</th>
+                        <th>Comuna de entrega</th>
+                        <th>Direccion de entrega</th>
+                        <th>Estado de envio</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for compra in orden %}
+                    <tr>
+                        <td>{{compra.id}}</td>
+                        <td>{{compra.usuario}}</td>
+                        <td>{{compra.f_compra}}</td>
+                        <td>{{compra.total}}</td>
+                        <td>{{compra.comuna}}</td>
+                        <td>{{compra.direccion}}</td>
+                        <td>{{compra.estado}}</td>
+                        <td>
+                            <a href="{% url 'estadocompra' compra.id %}" class="btnEditar">Editar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+
+
+{% endblock %}
