@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404 
-from modulos.productos.forms import productoForm
+from modulos.productos.forms import compraForm, productoForm
 from modulos.productos.models import Favorito, Producto,Carrito, OrdenCompra,compraProducto, comunas_santiago
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -288,3 +288,43 @@ def favoritos(request):
     favoritos = Favorito.objects.filter(usuario=request.user)
     productos_favoritos = Producto.objects.filter(id__in=[favorito.producto_id for favorito in favoritos])
     return render(request, 'productos/favoritos.html', {'productos_favoritos': productos_favoritos})
+
+
+@login_required
+def envioProductos(request):
+    orden = OrdenCompra.objects.all()
+    compraUsuario = compraProducto.objects.filter(compra__in = orden)
+
+    datos = {
+        "compraUsuario" : compraUsuario,
+        "orden": orden
+
+    }
+
+    return render(request,'compra/EnvioProductos.html',datos)
+
+@login_required
+def estadoCompra(request, id):
+    if request.method == 'GET':
+        orden = get_object_or_404(OrdenCompra, id=id)
+        datos = {
+            "formulario": compraForm(instance=orden)
+        }
+        return render(request, 'compra/estadoCompra.html', datos)
+
+    else:
+         
+        try:
+            orden = get_object_or_404(OrdenCompra, id=id)
+            ord_act = compraForm(request.POST, instance=orden)
+            ord_act.save()
+            return redirect('enviocompra')
+        except:
+            
+            datos ={
+                'error':'Ha ocurrido un error inesperado',
+                'formulario':compraForm(instance= get_object_or_404(OrdenCompra, id = id))
+            }
+            return render(request,'compra/estadoCompra.html', datos)
+
+
