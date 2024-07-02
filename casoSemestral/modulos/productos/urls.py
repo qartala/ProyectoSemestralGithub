@@ -20,7 +20,8 @@ urlpatterns = [
     path('quitar_favorito/<int:id>',views.quitar_favorito,name="quitar_fav"),
     path('favoritos',views.favoritos,name="favoritos"),
     path('envioProductos',views.envioProductos,name="enviocompra"),
-    path('estadoCompra/<int:id>',views.estadoCompra,name="estadocompra")
+    path('estadoCompra/<int:id>',views.estadoCompra,name="estadocompra"),
+    path('descargar_pdf/<str:filename>/', views.descargar_pdf, name='descargar_pdf')
     
 
    
