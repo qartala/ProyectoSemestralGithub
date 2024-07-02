@@ -2,12 +2,22 @@ from django.shortcuts import render,redirect,get_object_or_404
 from modulos.productos.forms import compraForm, productoForm
 from modulos.productos.models import Favorito, Producto,Carrito, OrdenCompra,compraProducto, comunas_santiago
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect ,HttpResponse
 from django.urls import reverse
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 import sweetify
 from django.core.paginator import Paginator
+from reportlab.lib.pagesizes import letter
+from reportlab.lib import colors
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.lib.styles import getSampleStyleSheet
+from io import BytesIO
+import os
+from django.conf import settings
+from .models import OrdenCompra, compraProducto, Producto, Carrito, User ,comunas_santiago
+
+
 # Create your views here.
 
 @login_required
@@ -198,6 +208,99 @@ def eliminarCarro(request):
 
 
 
+# def orden_compra(request, total):
+#     if request.method == 'GET':
+#         valor_total = total
+#         datos = {
+#             'total': valor_total,
+#             'comunas':comunas_santiago
+#         }
+
+#         return render(request,'compra/ordencompra.html',datos)
+    
+#     if request.method=='POST':
+#             try:
+#                 carritos = Carrito.objects.filter(usuario = request.user.id)
+#                 usuario = User.objects.get(id = request.user.id)
+                
+#                 direccion = request.POST['direccion']
+#                 recibe = request.POST['recibe']
+#                 comuna = request.POST['comuna']
+
+#                 orden = OrdenCompra()
+#                 orden.total = total
+#                 orden.direccion = direccion
+#                 orden.recibe = recibe
+#                 orden.comuna = comuna 
+#                 orden.usuario = usuario
+#                 orden.save()
+
+#                 for producto in carritos :
+#                     compra = compraProducto()
+#                     compra.cantidad = producto.cantidad
+#                     compra.subtotal = producto.subtotal
+#                     compra.nombre = producto.producto.nombre
+#                     compra.compra = orden
+
+#                     producto_enc = Producto.objects.get(id = producto.producto.id)
+#                     producto_enc.stock = producto_enc.stock - compra.cantidad
+
+#                     producto_enc.save()
+#                     compra.save()
+                    
+#                 carritos.delete()
+#                 return redirect('index')
+            
+
+#             except:
+#                 datos = {
+#                     'error':'Ha ocurrido un error inesperado'
+#                     }
+#                 return render(request,'compra/orden')
+
+def generar_pdf(filepath, orden):
+    doc = SimpleDocTemplate(filepath, pagesize=letter)
+    elements = []
+    styles = getSampleStyleSheet()
+
+    # Encabezado
+    elements.append(Paragraph('Orden de Compra', styles['Title']))
+    elements.append(Paragraph(f'Dirección: {orden.direccion}', styles['Normal']))
+    elements.append(Paragraph(f'Comuna: {orden.comuna}', styles['Normal']))
+    elements.append(Paragraph(f'Recibe: {orden.recibe}', styles['Normal']))
+    elements.append(Paragraph(f'Usuario: {orden.usuario}', styles['Normal']))
+
+    elements.append(Spacer(1, 12))
+
+    # Tabla de productos
+    data = [['Producto', 'Cantidad', 'Subtotal']]
+    productos = compraProducto.objects.filter(compra=orden)
+    for producto in productos:
+        data.append([producto.nombre, producto.cantidad, f'${producto.subtotal}'])
+
+    # Estilo de la tabla
+    table = Table(data)
+    table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+        ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+        ('GRID', (0, 0), (-1, -1), 1, colors.black),
+    ]))
+    elements.append(table)
+
+    elements.append(Spacer(1, 12))
+
+    # Total
+    elements.append(Paragraph(f'Total: ${orden.total}', styles['Normal']))
+
+    # Construir PDF
+    doc.build(elements)
+
+
+
 def orden_compra(request, total):
     if request.method == 'GET':
         valor_total = total
@@ -237,17 +340,37 @@ def orden_compra(request, total):
 
                     producto_enc.save()
                     compra.save()
-                    
+                
+                pdf_filename = f"orden_compra_{orden.id}.pdf"
+                pdf_filepath = os.path.join(settings.MEDIA_ROOT, pdf_filename)
+                generar_pdf(pdf_filepath, orden)
+
+                # Eliminar los productos del carrito
                 carritos.delete()
-                return redirect('index')
-            
+
+                # Redirigir al usuario a una página donde pueda descargar el PDF
+                return redirect('descargar_pdf', filename=pdf_filename)
 
             except:
                 datos = {
                     'error':'Ha ocurrido un error inesperado'
                     }
-                return render(request,'compra/orden')
-        
+                return render(request,'compra/ordencompra.html')
+
+
+
+
+def descargar_pdf(request, filename):
+    filepath = os.path.join(settings.MEDIA_ROOT, filename)
+    if os.path.exists(filepath):
+        with open(filepath, 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{filename}"'
+            return response
+    else:
+        return HttpResponse("El archivo no existe.")     
+
+
 def restarProductosBD(idProducto , cantidad):
     producto_encontrado = Producto.objects.get(id = idProducto)
     
