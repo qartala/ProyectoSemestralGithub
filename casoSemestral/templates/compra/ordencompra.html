@@ -1,36 +1,36 @@
 {% extends '../base/base.html' %}
 
 {% block content %}
-<div class=" ordencomp card" >
-    <h3 class=" ordenmensaje mensaje">{{error}}</h3>
-    <h2 class="totalpagar">Total a pagar {{total}}</h2>
+<div class="ordencomp-wrapper col-sm-12 col-md-7 col-lg-8 col-xl-8">
 
-    <form action="" method="post">
+    <form class="formorden" action="" method="post">
+        <h3 class="ordenmensaje mensaje">{{error}}</h3>
+        <h2 class="ordentotalpagar">Total a pagar {{total}}CLP</h2>
         {% csrf_token %}
-
-        <select class="formulaorden form-control" name="comuna" id="comuna"  placeholder=" Seleccione una promocion"required>
-            <option clase="comuna" value="">
+        
+        <select class="seleccomuna form-control" name="comuna" id="comuna" placeholder=" Seleccione una promocion" required>
+            <option class="comuna" value="">
                 Selecciona la comuna
             </option>
-            {% for com in comunas%}
-           <option value="{{ com.0 }}">{{com.1}}</option>
-           {% endfor %}
+            {% for com in comunas %}
+                <option value="{{ com.0 }}">{{ com.1 }}</option>
+            {% endfor %}
         </select>
 
         <div>
-            <input class="direccionorden" type="text" name="direccion" id="direccion" placeholder="Ingresa la direccion de entrega">
+            <input class="direccionorden form-control mt-2" type="text" name="direccion" id="direccion" placeholder="Ingresa la direccion de entrega">
         </div>
 
         <div>
-            <input class="recibaorden" type="text" name="recibe" id="recibe" placeholder="Ingresa quien recibira ">
+            <input class="recibaorden form-control mt-2" type="text" name="recibe" id="recibe" placeholder="Ingresa quien recibira ">
         </div>
 
-
-        <button class="btn_realizacomp">Realizar compra</button>
-
+        <div class="btn_centrorealizarcomp">
+            <button class="btn_realizacomp btn btn-primary mt-2">Realizar compra</button>
+        </div>
     </form>
 </div>
-
-
-
 {% endblock %}
+
+
+

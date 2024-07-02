@@ -23,11 +23,10 @@ class compraForm(forms.ModelForm):
         model = OrdenCompra
         fields = ('total','comuna','direccion','usuario','estado')
         widgets = {
-            'f_compra': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'total': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'comuna': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'direccion':forms.TextInput(attrs={'readonly': 'readonly'}),
-            'usuario': forms.TextInput(attrs={'readonly': 'readonly'}),
-            'estado': forms.Select(attrs = {'class':'form-control mt-2','placeholder':'Selecciona una categoria'}),
-        }
+            'total': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Total', 'readonly': 'readonly'}),
+            'comuna': forms.TextInput(attrs={'class': 'form-control mt-2', 'placeholder': 'Comuna', 'readonly': 'readonly'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control mt-2', 'placeholder': 'Dirección', 'readonly': 'readonly'}),
+            'usuario': forms.TextInput(attrs={'class': 'form-control mt-2', 'placeholder': 'Usuario', 'readonly': 'readonly'}),
+            'estado': forms.Select(attrs={'class': 'form-control mt-2', 'placeholder': 'Selecciona un estado'}),
+           }
 

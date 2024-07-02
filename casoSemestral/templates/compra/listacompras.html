@@ -1,46 +1,44 @@
 {% extends '../base/base.html' %}
 
 {% block content %}
-<div>
-<div class="card" style="margin-top: 20%;">
-
+<div class="ordenes-wrapper">
+    <div class="tituloentorno">
+    <h2 class="tituloListorden">Mis Ordenes de compra</h2>
+     </div>
     {% if ordenes %}
-        <h2>Ordenes de compra </h2>
-        {% for orden in ordenes %}
-        <ul>
-            <li>Datos de la compra N° {{orden.id}}</li>
-            <li>Fecha de compra {{orden.f_compra}}</li>
-            <li>Total {{orden.total}}</li>
-            <li>Comuna de entrega {{orden.comuna}}</li>
-            <li>Direccion de entrega {{orden.direccion}}</li>
-
-            <li>Estado de envio {{orden.estado}}</li>
-            
-            {% if orden.estado == "En bodega" %}
-            <li>Estado de envio {{orden.estado}} <i class="fa-solid fa-filter"></i></li>
-            {% endif %}
-
-            {% for compra in orden.compraproducto_set.all %}
-            <li>nombre del producto {{compra.nombre}}</li>
-            <li>cant del producto {{compra.cantidad}}</li>
-            <li>subtotal del producto{{compra.subtotal}}</li>
+        <div class="ordenes-container">
+            {% for orden in ordenes %}
+                <div class="orden-card">
+                    <ul class="orden-list">
+                        <li class="orden-id">Datos de la compra N°: {{ orden.id }}</li>
+                        <li class="orden-fecha">Fecha de compra: {{ orden.f_compra }}</li>
+                        <li class="orden-total">Total: {{ orden.total }}</li>
+                        <li class="orden-comuna">Comuna de entrega: {{ orden.comuna }}</li>
+                        <li class="orden-direccion">Dirección de entrega: {{ orden.direccion }}</li>
+                        <li class="orden-estado">Estado de envío: {{ orden.estado }}
+                            {% if orden.estado == "En bodega" %}
+                                <i class="fa-solid fa-shop"></i>
+                            {% elif orden.estado == "Recibido" %}
+                                <i class="fa-solid fa-house-circle-check"></i>
+                            {% elif orden.estado == "Enviado" %}
+                                <i class="fa-solid fa-truck-fast"></i>
+                            {% endif %}
+                        </li>
+                        {% for compra in orden.compraproducto_set.all %}
+                            <li class="compra-nombre">Nombre del producto: {{ compra.nombre }}</li>
+                            <li class="compra-cantidad">Cantidad del producto: {{ compra.cantidad }}</li>
+                            <li class="compra-subtotal">Subtotal del producto: {{ compra.subtotal }} CLP</li>
+                        {% endfor %}
+                    </ul>
+                </div>
             {% endfor %}
-
-        </ul>
-        {% endfor %}
-    </div>
-    <div class="completo2">
+        </div>
+        <div class="completo2"></div>
     {% else %}
-    <div class="mensalista mensaje"> 
-        <h2><i class="fas fa-shopping-bag"></i>
-            {{mensaje}}
-        </h2>
-    </div>
-</div>
+        <div class="mensalista mensaje"> 
+            <h2><i class="fas fa-shopping-bag"></i> {{ mensaje }}</h2>
+        </div>
     {% endif %}
-    
-   
-
-<div class="parteAbajo" style="height: 242px;"></div> <!-- Espacio vacío para separar los productos del footer -->
+</div>
 
 {% endblock %}
